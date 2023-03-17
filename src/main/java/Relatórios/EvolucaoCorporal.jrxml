@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EvolucaoCorporal" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e3932fb2-c649-47fe-88b9-4f243adfe944">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Oi2Fit"/>
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[bWVkaWRhcyAsMTUsMTUsYmUzY2RmZjMtNDVkNy00NDU4LTlkNmEtNThhMGViMWY3MGJkO2FsdW5v
+ICwxMjMsMTUsYzk5OTNjMDUtMDgwZS00MGUxLWJmZjQtYWQ0Y2QwMWI1YTgzOw==]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="479"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="521"/>
+	<parameter name="idaluno" class="java.lang.Integer" nestedType="java.lang.Integer">
+		<parameterDescription><![CDATA[Id Aluno:]]></parameterDescription>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT nome_alu,
+	sexo_alu,
+	idade_alu,
+	email_alu,
+	data_medidas,
+	peso_kg,
+	altura_m,
+	imc
+FROM medidas B
+INNER JOIN aluno A ON B.id_alu = A.id_alu
+WHERE A.id_alu = $P!{idaluno}]]>
+	</queryString>
+	<field name="nome_alu" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome_alu"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome_alu"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="sexo_alu" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="sexo_alu"/>
+		<property name="com.jaspersoft.studio.field.label" value="sexo_alu"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="idade_alu" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="idade_alu"/>
+		<property name="com.jaspersoft.studio.field.label" value="idade_alu"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="email_alu" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="email_alu"/>
+		<property name="com.jaspersoft.studio.field.label" value="email_alu"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="data_medidas" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="data_medidas"/>
+		<property name="com.jaspersoft.studio.field.label" value="data_medidas"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="medidas"/>
+	</field>
+	<field name="peso_kg" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.name" value="peso_kg"/>
+		<property name="com.jaspersoft.studio.field.label" value="peso_kg"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="medidas"/>
+	</field>
+	<field name="altura_m" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.name" value="altura_m"/>
+		<property name="com.jaspersoft.studio.field.label" value="altura_m"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="medidas"/>
+	</field>
+	<field name="imc" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.name" value="imc"/>
+		<property name="com.jaspersoft.studio.field.label" value="imc"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="medidas"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="60" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-23" width="595" height="71" backcolor="#B39E81" uuid="c17c8b2b-7eeb-4c09-857f-76d5fb7bdd0d"/>
+				<staticText>
+					<reportElement x="0" y="10" width="594" height="60" forecolor="#C4331F" uuid="94bdec8b-e4f7-4de3-9d51-e6a2e53103da"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font size="15" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Relatório de Evolução da Composição Corporal]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="75" splitType="Stretch">
+			<staticText>
+				<reportElement x="40" y="1" width="60" height="18" uuid="0475bb27-733b-405a-a3c0-dc2903341a0d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aluno(a):]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="1" width="410" height="18" uuid="8c7ede39-f92e-4285-ba87-d4928d33f47d"/>
+				<box padding="0">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_alu}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="40" y="19" width="60" height="18" uuid="417b4d86-834e-4424-8b69-be374c9d7e2e"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sexo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="37" width="60" height="18" uuid="163d7169-9a12-4437-807c-a1dd1f91ddfe"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Idade:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="55" width="60" height="18" uuid="46a55b8f-1d87-49ee-beef-af23a1bc4821"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[E-mail:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="99" y="19" width="412" height="18" uuid="6fff2937-08ac-4878-98fe-c5e154c1c99f"/>
+				<box padding="0">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sexo_alu}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="99" y="37" width="412" height="18" uuid="92162ca3-bc29-4ff5-b96d-2c55faadcf4f"/>
+				<box padding="0">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idade_alu}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="99" y="55" width="412" height="18" uuid="e2df6bf6-2dac-4a4d-be4d-bcefd32b6235"/>
+				<box padding="0">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{email_alu}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="40" y="2" width="109" height="22" forecolor="#FFFFFF" backcolor="#B59C67" uuid="a69ad9d0-f6e9-444b-b9ce-d49bccd1cf85"/>
+				<box padding="0">
+					<pen lineColor="#E6E6E6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Data medida]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="149" y="2" width="100" height="22" forecolor="#FFFFFF" backcolor="#B59C67" uuid="5ac7d874-c2c4-431e-82bc-88284c13cc1f"/>
+				<box padding="0">
+					<pen lineColor="#E6E6E6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Peso (kg)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="249" y="2" width="100" height="22" forecolor="#FFFFFF" backcolor="#B59C67" uuid="352e9fd9-533a-4a37-b8ff-3f0df09e4305"/>
+				<box padding="0">
+					<pen lineColor="#E6E6E6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Altura (m)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="349" y="2" width="165" height="22" forecolor="#FFFFFF" backcolor="#B59C67" uuid="eab4a105-4116-41c0-a7a2-ca47ac51ad0b"/>
+				<box padding="0">
+					<pen lineColor="#E6E6E6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IMC]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<textField>
+				<reportElement x="40" y="0" width="108" height="21" uuid="af4f9429-e8c6-4955-a063-c2a99986b32b"/>
+				<box padding="0">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peso_kg}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="149" y="0" width="100" height="21" uuid="278cb544-39e8-41b4-9e1c-b3ecbf8f500e"/>
+				<box padding="0">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_medidas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="249" y="0" width="100" height="21" uuid="e45f0b42-1c25-4371-a17a-02657ee4a214"/>
+				<box padding="0">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{altura_m}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="0" width="165" height="21" uuid="6c10e45d-186d-4306-b7df-f8d96ce516d2"/>
+				<box padding="0">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#003300"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(($F{imc} <= 18.5) ? $F{imc} + " - " + "Abaixo do peso normal" : ($F{imc} > 18.5 && $F{imc} <= 25) ? $F{imc} + " - " + "Peso normal" : ($F{imc} > 25 && $F{imc} <= 30) ? $F{imc} + " - " + "Acima do peso normal" : $F{imc} + " - " + "Obesidade")]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="404" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<stackedAreaChart>
+				<chart isShowLegend="true" evaluationTime="Report">
+					<reportElement key="" mode="Transparent" x="0" y="10" width="290" height="180" isPrintWhenDetailOverflows="true" uuid="b85527dc-e0d1-4504-bc72-5e33b94cc64c"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend position="Top"/>
+				</chart>
+				<categoryDataset>
+					<dataset resetType="Report"/>
+					<categorySeries>
+						<seriesExpression><![CDATA["Altura"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{data_medidas}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{altura_m}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<areaPlot>
+					<plot>
+						<seriesColor seriesOrder="0" color="#2B991F"/>
+					</plot>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</areaPlot>
+			</stackedAreaChart>
+			<stackedAreaChart>
+				<chart isShowLegend="true" evaluationTime="Report">
+					<reportElement key="" mode="Transparent" x="300" y="10" width="260" height="180" isPrintWhenDetailOverflows="true" uuid="fd08e5ba-fe7a-45d2-a12a-d7c083d6b8e6"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend position="Top"/>
+				</chart>
+				<categoryDataset>
+					<dataset resetType="Report"/>
+					<categorySeries>
+						<seriesExpression><![CDATA["Peso"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{data_medidas}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{peso_kg}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<areaPlot>
+					<plot/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</areaPlot>
+			</stackedAreaChart>
+			<stackedAreaChart>
+				<chart isShowLegend="true" evaluationTime="Report">
+					<reportElement key="" mode="Transparent" x="149" y="205" width="290" height="180" isPrintWhenDetailOverflows="true" uuid="b95eaffd-cd2b-4bce-9e74-4259b28a4fc2"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend position="Top"/>
+				</chart>
+				<categoryDataset>
+					<dataset resetType="Report"/>
+					<categorySeries>
+						<seriesExpression><![CDATA["IMC"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{data_medidas}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{imc}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<areaPlot>
+					<plot>
+						<seriesColor seriesOrder="0" color="#182AB5"/>
+					</plot>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</areaPlot>
+			</stackedAreaChart>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="33" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="35" splitType="Stretch"/>
+	</summary>
+</jasperReport>
