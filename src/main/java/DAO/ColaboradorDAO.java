@@ -4,6 +4,8 @@ import BancoDeDados.DAO;
 import Model.Colaborador;
 import java.io.File;
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -86,36 +88,53 @@ public class ColaboradorDAO {
             return false;
         }
     }
-
+    
     public int criarColab(Colaborador colab) {
         try {
-            pstdados = conn.prepareStatement(criarColab, tipo, concorrencia);
+            String senhaCriptografada = encryptPassword(colab.getSenha_colab());
+            pstdados = conn.prepareStatement("INSERT INTO colaborador (nome_colab, login_colab, senha_colab, cpf_colab) VALUES (?, ?, ?, ?)");
             pstdados.setString(1, colab.getNome_colab());
             pstdados.setString(2, colab.getLogin_colab());
-            pstdados.setString(3, colab.getSenha_colab());
+            pstdados.setString(3, senhaCriptografada);
             pstdados.setString(4, colab.getCpf_colab());
-            execute = pstdados.executeUpdate();//retorna um numero positivo pra cima de 0 no caso, retorna 0 se caso nenhuma linha foi mudada
+            int execute = pstdados.executeUpdate();
             pstdados.close();
-             JOptionPane.showMessageDialog(null, "Colaborador inserido com sucesso.", "Ok", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Colaborador inserido com sucesso.", "Ok", JOptionPane.INFORMATION_MESSAGE);
             return execute;
         } catch (SQLException se) {
             System.out.println("Erro ao criar colaborador " + se);
         } catch (NumberFormatException nfe) {
-            System.out.println("CPF precisa ser apenas numeros sem '.' e sem '-'");
+            System.out.println("CPF precisa ser apenas números sem '.' e sem '-'");
         }
         return -1;
     }
-
+    
+    public static String encryptPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(password.getBytes());
+            byte[] bytes = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for (byte b : bytes) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
     public int login(String login, String senha) {
         try {
-            pstdados = conn.prepareStatement(login2, tipo, concorrencia);
+            String senhaCriptografada = encryptPassword(senha);
+            pstdados = conn.prepareStatement("SELECT id_colab FROM colaborador WHERE login_colab = ? AND senha_colab = ?", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
             pstdados.setString(1, login);
-            pstdados.setString(2, senha);
+            pstdados.setString(2, senhaCriptografada);
             rsdados = pstdados.executeQuery();
             if (rsdados.first()) {
                 return rsdados.getInt("id_colab");
             }
-
         } catch (SQLException se) {
             System.out.println("Erro ao logar " + se);
         }
