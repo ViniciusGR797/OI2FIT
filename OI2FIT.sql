@@ -47,7 +47,9 @@ INSERT INTO Aluno (nome_alu, cpf_alu, sexo_alu, idade_alu, email_alu, data_matri
 INSERT INTO Aluno (nome_alu, cpf_alu, sexo_alu, idade_alu, email_alu, data_matricula_alu) VALUES ('Michelle', '11111111113', 'Feminino', '22', 'michelle@gmail.com', '2022-10-24'); 
 INSERT INTO Aluno (nome_alu, cpf_alu, sexo_alu, idade_alu, email_alu, data_matricula_alu) VALUES ('Laura', '12398787494', 'Feminino', '13', 'laulau@gmail.com', '2022-11-27'); 
 
+# senha do lucas é "1"
 INSERT INTO Colaborador (nome_colab, login_colab, senha_colab, cpf_colab) VALUES ('Lucas', 'lucas', '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b', '12312312354'); 
+# senha do adm é "adm"
 INSERT INTO Colaborador (nome_colab, login_colab, senha_colab, cpf_colab) VALUES ('Administrador', 'adm', '86f65e28a754e1a71b2df9403615a6c436c32c42a75a10d02813961b86f1e428', '89547437543'); 
 
 INSERT INTO Medidas (peso_kg, altura_m, imc, id_alu) VALUES ('70', '1.70', '25', '4'); 
